@@ -13,10 +13,30 @@ exports.processRequest = async function () {
 
         const languageCode = `${nameParts[0]}-${nameParts[1]}`;
 
-        const language = LocaleCode.getLanguageNativeName(languageCode);
-        const country = LocaleCode.getCountryName(languageCode);
-        const name = nameParts[3].trim();
+        let language = '';
+        let country = '';
+        if (languageCode === 'fil-PH') {
+            language = 'Filipino';
+            country = 'Philippines';
+        } else if (languageCode === 'nb-no') {
+            language = 'Norwegian Bokmål';
+            country = 'Norway';
+        } else if (languageCode === 'ar-XA') {
+            language = LocaleCode.getLanguageNativeName(languageCode);
+            country = 'International';
+        } else {
+            language = LocaleCode.getLanguageNativeName(languageCode);
+            country = LocaleCode.getCountryName(languageCode);
+        }
+        const categoryLevel = nameParts[2] === 'Wavenet' ? 'Standard' : 'Primary';
+
+        const name = categoryLevel + '-' + nameParts[3].trim();
         const gender = value.ssmlGender;
+
+
+        if (!country || !language) {
+            console.log(id);
+        }
 
         return {
             id,

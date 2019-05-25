@@ -1,8 +1,6 @@
 exports.lambdaHandler = async (event, context) => {
     try {
 
-        console.log(event.httpMethod);
-
         if (event.httpMethod === 'OPTIONS') {
             return {
                 headers: {
@@ -31,7 +29,7 @@ exports.lambdaHandler = async (event, context) => {
                 languageCode: `${idArr[0]}-${idArr[1]}`
             },
             audioConfig: {
-                audioEncoding: "MP3"
+                audioEncoding: 'MP3'
             }
         };
 
@@ -52,6 +50,13 @@ exports.lambdaHandler = async (event, context) => {
         }
     } catch (err) {
         console.log(err);
-        return err;
+        return {
+            headers: {
+                "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+                "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
+            },
+            statusCode: 400,
+            body: 'unexpected error'
+        }
     }
 };

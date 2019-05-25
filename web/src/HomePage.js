@@ -1,12 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
 import logo from './assets/img/logo.png';
-import {AppBar, CircularProgress, TextField} from "@material-ui/core";
+import {AppBar, CircularProgress, TextField, withStyles} from "@material-ui/core";
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import SpeakIcon from '@material-ui/icons/KeyboardVoice';
 import {SimpleShareButtons} from "react-simple-share";
@@ -137,6 +135,18 @@ const footers = [
     },
 ];
 
+
+const convertTextToSpeech = async function (text, languageSelection) {
+    try {
+        const json = {text, languageSelection};
+        const url = `${process.env.REACT_APP_PROXY_URL}/demotts`;
+        const result = await axios.post(url, json);
+        return result.data.audioContent;
+    } catch (e) {
+        throw("Unknown error please try again");
+    }
+};
+
 export class HomePage extends React.Component {
 
     state = {
@@ -144,8 +154,10 @@ export class HomePage extends React.Component {
         text: '',
         oldText: '',
         pageLoading: false,
+        convertLoading: false,
         speakLoading: false,
-        data: null,
+        downloadLoading: false,
+        audioContent: null,
         languageSelection: null,
     };
 
@@ -158,7 +170,7 @@ export class HomePage extends React.Component {
             const options = data.voices.map(item => (
                 {
                     value: item.id,
-                    label: `${item.country ? item.language + ' - ' + item.country : item.language} (${item.gender} - ${item.name})`
+                    label: `${item.language} - ${item.country} (${item.gender} - ${item.name})`
                 }
             ));
             this.setState({
@@ -197,13 +209,13 @@ export class HomePage extends React.Component {
     };
 
     handleOnSpeak = () => {
+
         const {languageSelection, text, oldText} = this.state;
-        if (!languageSelection) {
-            alert("please select speako voice");
-            return;
-        }
-        if (!text) {
-            alert("please write text to be converted");
+
+        try {
+            this.validate();
+        } catch (e) {
+            alert(e);
             return;
         }
 
@@ -212,34 +224,96 @@ export class HomePage extends React.Component {
             return;
         }
 
-        const json = {
-            text: this.state.text,
-            languageSelection: this.state.languageSelection
-        };
-
-        const url = `${process.env.REACT_APP_PROXY_URL}/demotts`;
-
-        axios.post(url, json)
-            .then(value => {
-                this.setState({
-                    speakLoading: false,
-                    data: value.data.audioContent,
-                    oldText: text
-                })
-            }).catch(() => {
-            alert("Unknown error please try again");
+        convertTextToSpeech(text, languageSelection).then(audioContent => {
+            this.previewAudioPlayer.src = `data:audio/mp3;base64,${audioContent}`;
+            this.previewAudioPlayer.load();
             this.setState({
-                speakLoading: false
+                speakLoading: false,
+                convertLoading: false,
+                audioContent,
+                oldText: text,
+            });
+        }).catch(reason => {
+            alert(reason);
+            this.setState({
+                speakLoading: false,
+                convertLoading: false
+            })
+        });
+
+        this.setState({
+            speakLoading: true,
+            convertLoading: true
+        })
+    };
+
+    handleOnDownload = () => {
+
+        const {languageSelection, text, oldText} = this.state;
+
+        try {
+            this.validate();
+        } catch (e) {
+            alert(e);
+            return;
+        }
+        if (text === oldText) {
+            this.downloadLink.click();
+            return;
+        }
+
+        convertTextToSpeech(text, languageSelection).then(audioContent => {
+            this.downloadLink.href = `data:audio/mp3;base64,${audioContent}`;
+            this.downloadLink.click();
+            this.setState({
+                convertLoading: false,
+                downloadLoading: false,
+                audioContent,
+                oldText: text
+            })
+        }).catch(reason => {
+            alert(reason);
+            this.setState({
+                convertLoading: false,
+                downloadLoading: false,
             })
         });
         this.setState({
-            speakLoading: true
+            convertLoading: true,
+            downloadLoading: true,
         })
+    };
+
+    handleOnFilter = (option, searchText) => {
+        const searchParts = searchText.split(' ');
+        let matchParts = 0;
+        for (let i = 0; i < searchParts.length; i++) {
+            if (searchParts[i].toLowerCase() === 'male') {
+                if (!option.label.toLowerCase().includes('female'.toLowerCase())) {
+                    matchParts++;
+                }
+            } else {
+                if (option.label.toLowerCase().includes(searchParts[i].toLowerCase())) {
+                    matchParts++;
+                }
+            }
+        }
+        return matchParts === searchParts.length;
+    };
+
+    validate = () => {
+        const {languageSelection, text} = this.state;
+        if (!languageSelection) {
+            throw("please select speako voice");
+        }
+        if (!text) {
+            throw("please write text to be converted");
+        }
     };
 
     render = () => {
 
-        const {options, text, pageLoading, speakLoading, data} = this.state;
+        const {options, text, pageLoading, convertLoading, speakLoading, downloadLoading, audioContent} = this.state;
         const {classes} = this.props;
 
         return (
@@ -247,7 +321,9 @@ export class HomePage extends React.Component {
                 <CssBaseline/>
                 <AppBar position={"sticky"} color={"inherit"}>
                     <Toolbar>
-                        <img alt="Speako" src={logo} className={classes.logoAvatar}/>
+                        <a href={"/"}>
+                            <img alt="Speako" src={logo} className={classes.logoAvatar}/>
+                        </a>
                     </Toolbar>
                 </AppBar>
                 {pageLoading ?
@@ -262,37 +338,37 @@ export class HomePage extends React.Component {
                             Convert Text to Speech
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary" paragraph>
-                            Speako Text-to-Speech converts text into human-like speech in more than 100 voices across
+                            Speako Text-to-Speech converts text into human-like speech in more than 100 voices
+                            across
                             20+ languages and variants.
-                            It applies machine learning and artificial intelligent algorithms to deliver high-fidelity
+                            It applies machine learning and artificial intelligent algorithms to deliver
+                            high-fidelity
                             audio.
                             With this easy-to-use API, you can create lifelike interactions with your users that
                             transform customer service,
                             device interaction, and other applications.
                         </Typography>
-
                         <Typography variant="h4" color="textPrimary" gutterBottom>
                             Convert your text to speech for free right now
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary" paragraph>
-                            Type what you want, select a language then click “Speak” to convert text to mp3 audio
-                            file, You can play the audio online or download the audio as mp3 file.
-                            The text language must match the selected voice language: Mixing language (English text with
-                            a Spanish male voice) does not produce valid results.
+                            Type what you want, select a language then click “Speak” to convert text to speech,
+                            You can play the audio online or download the audio as mp3 file.
+                            The text language must match the selected voice language: Mixing language (English text
+                            with a Spanish male voice) does not produce valid results.
                         </Typography>
                         <Select
                             className="basic-single"
                             classNamePrefix="select"
-                            defaultValue={''}
                             isDisabled={false}
                             isLoading={pageLoading}
                             isClearable={true}
-                            isRtl={false}
                             isSearchable={true}
                             name="color"
                             placeholder={'Select Speako Voice'}
                             options={options}
                             onChange={this.handleInputChange}
+                            filterOption={this.handleOnFilter}
                         />
                         <TextField
                             id="text"
@@ -304,30 +380,29 @@ export class HomePage extends React.Component {
                             margin="normal"
                             variant="outlined"
                         />
-                        <Button onClick={this.handleOnSpeak} color={"primary"} size={"large"} disabled={speakLoading}>
+                        <Button onClick={this.handleOnSpeak} color={"primary"} className={classes.button}
+                                disabled={speakLoading || convertLoading}>
                             {"Speak"}
                             {speakLoading ? <CircularProgress className={classes.controlsIcon} size={25}/> :
                                 <SpeakIcon className={classes.controlsIcon}/>}
                         </Button>
-                        {data ?
-                            <a href={`data:audio/mp3;base64,${data}`} download color={"default"}
-                               style={{textDecoration: 'none', margin: '5px'}}>
-                                <Button color="primary" className={classes.button}>
-                                    {"Download"}
-                                    <DownloadIcon className={classes.controlsIcon}/>
-                                </Button>
-                            </a>
-                            :
-                            <Button color="primary" className={classes.button} disabled={true}>
-                                {"Download"}
-                                <DownloadIcon className={classes.controlsIcon}/>
-                            </Button>
-                        }
+
+                        <Button color="primary" disabled={downloadLoading || convertLoading}
+                                className={classes.button} onClick={this.handleOnDownload}>
+                            {"Download"}
+                            {downloadLoading ? <CircularProgress className={classes.controlsIcon} size={25}/> :
+                                <DownloadIcon className={classes.controlsIcon}/>}
+
+                        </Button>
+                        <a style={{display: 'none'}} ref={downloadLink => this.downloadLink = downloadLink}
+                           download={'speako.mp3'} href={`data:audio/mp3;base64,${audioContent}`}/>
                         <div className={classes.likeButton}>
                             <LikeFacebookButton/>
                         </div>
-                        <audio src={`data:audio/mp3;base64,${data}`} autoPlay={true}
+                        <audio src={`data:audio/mp3;base64,${audioContent}`}
                                ref={audioPlayer => this.audioPlayer = audioPlayer}/>
+                        <audio src='' autoPlay={true}
+                               ref={previewAudioPlayer => this.previewAudioPlayer = previewAudioPlayer}/>
                     </main>
                 }
                 {/* Footer */}
@@ -349,9 +424,5 @@ export class HomePage extends React.Component {
         );
     }
 }
-
-HomePage.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(HomePage);
