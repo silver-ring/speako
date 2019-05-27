@@ -2,7 +2,7 @@ import React from "react";
 import ContactUs from "../view/ContactUs";
 import HomePage from "../view/HomePage";
 import {Route, Switch} from "react-router";
-import PrivacyAndTerms from "./PrivacyAndTerms";
+import PrivacyAndTerms from "../view/PrivacyAndTerms";
 
 const ContentRouter = (props) => {
 
