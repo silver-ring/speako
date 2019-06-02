@@ -48,6 +48,24 @@ Resources:
           Properties:
             Path: /demotts
             Method: any
+  SendContactUsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: SendContactUs/
+      Handler: index.handler
+      Runtime: nodejs10.x
+      Environment:
+        Variables:
+          "smtpHost": 'email-smtp.us-east-1.amazonaws.com'
+          "smtpUser": 'AKIA6LLXCXVVFN5YG56W'
+          "smtpPass": 'BIi632UIjFwfls8nuXCqGHzWywWR5kF72CgO1zPgTkZq'
+          "smtpEmail": 'contact@speako.io'
+      Events:
+        DemoTts:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /sendcontactus
+            Method: any
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -73,4 +91,10 @@ Outputs:
     Value: !GetAtt DemoTtsFunction.Arn
   DemoTtsFunctionIamRole:
     Description: "Implicit IAM Role created for Demo Text to speech function"
+    Value: !GetAtt DemoTtsFunctionRole.Arn
+  SendContactUsFunction:
+    Description: "Send Contact Us Lambda Function ARN"
+    Value: !GetAtt SendContactUs.Arn
+  SendContactUsFunctionIamRole:
+    Description: "Implicit IAM Role created for Send Contact Us function"
     Value: !GetAtt DemoTtsFunctionRole.Arn

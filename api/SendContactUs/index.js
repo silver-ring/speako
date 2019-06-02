@@ -1,4 +1,4 @@
-exports.lambdaHandler = async (event, context) => {
+exports.handler = async (event, context) => {
     try {
 
         if (event.httpMethod === 'OPTIONS') {
@@ -14,30 +14,34 @@ exports.lambdaHandler = async (event, context) => {
 
         const request = JSON.parse(event.body.toString());
 
-        if (request.text >= 1000) {
-            throw("maximum character exceeded");
-        }
+        const nodemailer = require('nodemailer');
+        const environment = require('./environment');
 
-        const idArr = request.languageSelection.split("-");
-
-        const json = {
-            input: {
-                text: request.text
-            },
-            voice: {
-                name: request.languageSelection,
-                languageCode: `${idArr[0]}-${idArr[1]}`
-            },
-            audioConfig: {
-                audioEncoding: 'MP3'
+        const transporter = nodemailer.createTransport({
+            host: environment.smtpHost,
+            port: 587,
+            requireTLS: true, // true for 465, false for other ports
+            auth: {
+                user: environment.smtpUser,
+                pass: environment.smtpPass
             }
+        });
+
+        const subject = `${request.yourName} <${request.yourEmail}>`;
+        const html = request.message;
+
+        const mailOptions = {
+            from: environment.smtpEmail,
+            to: environment.smtpEmail,
+            subject,
+            html
         };
 
-        const axios = require('axios');
-        const response = await axios.post(`https://texttospeech.googleapis.com/v1/text:synthesize?fields=audioContent&key=${process.env.googleApiKey}`, json);
+        const info = await transporter.sendMail(mailOptions);
 
         const data = {
-            audioContent: response.data.audioContent
+            messageId: info.messageId,
+            previewUrl: nodemailer.getTestMessageUrl(info)
         };
 
         return {
