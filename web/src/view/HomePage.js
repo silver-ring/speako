@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import {CircularProgress, TextField, withStyles} from "@material-ui/core";
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import SpeakIcon from '@material-ui/icons/KeyboardVoice';
+import StopIcon from '@material-ui/icons/Stop';
 import Select from 'react-select';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
@@ -42,6 +43,7 @@ export class HomePage extends React.Component {
         downloadLoading: false,
         audioContent: null,
         languageSelection: null,
+        isPlaying: false
     };
 
     componentDidMount = () => {
@@ -133,6 +135,28 @@ export class HomePage extends React.Component {
         })
     };
 
+    handleOnReset = () => {
+        this.previewAudioPlayer.load();
+        this.previewAudioPlayer.pause();
+        this.audioPlayer.load();
+        this.audioPlayer.pause();
+        this.setState({
+            isPlaying: false
+        })
+    };
+
+    handleOnStop = () => {
+        this.setState({
+            isPlaying: false
+        })
+    };
+
+    handleOnPlay = () => {
+        this.setState({
+            isPlaying: true
+        })
+    };
+
     handleOnDownload = () => {
 
         const {languageSelection, text, oldText} = this.state;
@@ -199,7 +223,7 @@ export class HomePage extends React.Component {
 
     render = () => {
 
-        const {options, text, pageLoading, convertLoading, speakLoading, downloadLoading, audioContent} = this.state;
+        const {options, text, pageLoading, convertLoading, speakLoading, downloadLoading, audioContent, isPlaying} = this.state;
         const {classes} = this.props;
 
         if (pageLoading) {
@@ -254,13 +278,20 @@ export class HomePage extends React.Component {
                     margin="normal"
                     variant="outlined"
                 />
-                <Button onClick={this.handleOnSpeak} color={"primary"} className={classes.button}
-                        disabled={speakLoading || convertLoading}>
-                    {"Speak"}
-                    {speakLoading ? <CircularProgress className={classes.controlsIcon} size={25}/> :
-                        <SpeakIcon className={classes.controlsIcon}/>}
-                </Button>
-                <Button color="primary" disabled={downloadLoading || convertLoading}
+                {isPlaying ?
+                    < Button onClick={this.handleOnReset} color={"primary"} className={classes.button}>
+                        {"Stop"}
+                        <StopIcon className={classes.controlsIcon}/>
+                    </Button>
+                    :
+                    <Button onClick={this.handleOnSpeak} color={"primary"} className={classes.button}
+                            disabled={speakLoading || convertLoading}>
+                        {"Speak"}
+                        {speakLoading ? <CircularProgress className={classes.controlsIcon} size={25}/> :
+                            <SpeakIcon className={classes.controlsIcon}/>}
+                    </Button>
+                }
+                <Button color="primary" disabled={downloadLoading || convertLoading || isPlaying}
                         className={classes.button} onClick={this.handleOnDownload}>
                     {"Download"}
                     {downloadLoading ? <CircularProgress className={classes.controlsIcon} size={25}/> :
@@ -272,9 +303,9 @@ export class HomePage extends React.Component {
                 <div className={classes.likeButton}>
                     <LikeFacebookButton/>
                 </div>
-                <audio src={`data:audio/mp3;base64,${audioContent}`}
+                <audio src={`data:audio/mp3;base64,${audioContent}`} onPlay={this.handleOnPlay} onEnded={this.handleOnStop}
                        ref={audioPlayer => this.audioPlayer = audioPlayer}/>
-                <audio src='' autoPlay={true}
+                <audio src='' autoPlay={true} onPlay={this.handleOnPlay} onEnded={this.handleOnStop}
                        ref={previewAudioPlayer => this.previewAudioPlayer = previewAudioPlayer}/>
             </React.Fragment>
         );
