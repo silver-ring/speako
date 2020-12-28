@@ -1,2 +1,0 @@
-# speako
-speako.io

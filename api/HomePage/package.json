@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.18.0",
-    "locale-code": "^2.0.2",
-    "validate": "4.5.1"
-  }
-}
