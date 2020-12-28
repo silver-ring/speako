@@ -1,0 +1,22 @@
+<ion-grid class="entering_form" *ngIf="!isLoading">
+  <ion-row>
+    <ion-col>
+      <h1>Recover Email</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none">
+        <p>
+          Thank you, your email have been recovered successfully,
+          you can now start to sign in with your old email now.
+        </p>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row form_buttons>
+    <ion-col>
+      <ion-button routerLink="/visitor/signin" expand="block" color="light">Sign In</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

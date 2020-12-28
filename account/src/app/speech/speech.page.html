@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button
+                    defaultHref="/member/library"
+                    [text]="projectTitle">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/checkout" fill="solid">
+                Recharge
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+        <div id="waveElement" style="background-color: #1b7df9;" class="ion-no-padding ion-no-margin">
+        </div>
+    </ion-toolbar>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button class="top_buttons" (click)="addParagraph()">
+                    Add Paragraph
+                    <ion-icon slot="end" name="add"></ion-icon>
+                </ion-button>
+                <ion-button class="top_buttons" (click)="play()">
+                    Play Audio
+                    <ion-icon slot="end" name="play"></ion-icon>
+                </ion-button>
+                <ion-button class="top_buttons" (click)="downloadAudio()">
+                    Download Audio
+                    <ion-icon slot="end" name="download"></ion-icon>
+                </ion-button>
+                <ion-button class="top_buttons" (click)="downloadText()">
+                    Download Text
+                    <ion-icon slot="end" name="document-text"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-reorder-group *ngIf="paragraphs.length > 0" disabled="false" (ionItemReorder)="doReorder($event)">
+        <ion-item *ngFor="let paragraph of paragraphs" button (click)="editParagraph(paragraph)">
+            <ion-reorder slot="start"></ion-reorder>
+            <p style="word-wrap: break-word">{{paragraph.text}}</p>
+        </ion-item>
+    </ion-reorder-group>
+    <ion-card *ngIf="paragraphs.length === 0">
+        <ion-card-header>
+            <ion-card-content>
+                No Paragraphs Added Yet
+            </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

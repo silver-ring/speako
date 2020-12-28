@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "speako": {
+      "hosting": {
+        "speako": [
+          "website"
+        ]
+      }
+    }
+  }
+}

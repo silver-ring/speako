@@ -1,0 +1,40 @@
+<ion-grid class="entering_form">
+    <ion-row>
+        <ion-col>
+            <h1>Sign In</h1>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label position="stacked" color="primary">Email</ion-label>
+                <ion-input [(ngModel)]="email" name="email" type="text"
+                           spellcheck="false"
+                           autocapitalize="off"
+                           required>
+                </ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label position="stacked" color="primary">Password</ion-label>
+                <ion-input [(ngModel)]="password" name="password" type="password"
+                           required>
+                </ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row form_buttons>
+        <ion-col>
+            <ion-button (click)="onSignIn()" type="submit" expand="block">SignIn</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button routerLink="/visitor/signup" color="light" expand="block">Sign Up</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button routerLink="/visitor/reset" color="light" expand="block">Forget Password</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>

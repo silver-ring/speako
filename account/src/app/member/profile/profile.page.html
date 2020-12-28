@@ -1,0 +1,49 @@
+<ion-grid style="width: 100%">
+    <ion-row>
+        <ion-col size-lg="8" offset-lg="2" size="12">
+            <ion-card>
+                <ion-card-header>
+                    <h1>Edit Your Profile</h1>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                Your Account Email:
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                <ion-input name="email" type="email" [(ngModel)]="email">
+                                </ion-input>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                New Account Password:
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                <ion-input name="password" type="password" [(ngModel)]="password"
+                                           placeholder="Enter your new password">
+                                </ion-input>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                Subscription To News:
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                <ion-checkbox [(ngModel)]="newsSubscription"></ion-checkbox>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-button class="ion-no-margin" (click)="update()" size="small">
+                                    Update
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>

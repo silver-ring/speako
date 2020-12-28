@@ -1,0 +1,27 @@
+<ion-grid class="entering_form">
+  <ion-row>
+    <ion-col>
+      <h1>Forget Password</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="stacked" color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="email" name="email" type="text"
+                   spellcheck="false"
+                   autocapitalize="off"
+                   required>
+        </ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row form_buttons>
+    <ion-col>
+      <ion-button (click)="onReset()" type="submit" expand="block">Submit</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button routerLink="/visitor/signin" color="light" expand="block">Sign In</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

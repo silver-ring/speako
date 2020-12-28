@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{operation === 0 ? 'Create' : 'Edit'}} Project</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+                <ion-icon name="close" slot="start"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label position="stacked">Project Title
+                <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="projectTitle" [autofocus]="true"></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-button (click)="doAction()" class="ion-margin-vertical ion-padding-end ion-float-end">
+        Done
+    </ion-button>
+</ion-content>

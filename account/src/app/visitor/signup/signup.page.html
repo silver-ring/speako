@@ -1,0 +1,56 @@
+<ion-grid class="entering_form">
+    <ion-row>
+        <ion-col>
+            <h1>Sign Up</h1>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label position="stacked" color="primary">Email</ion-label>
+                <ion-input [(ngModel)]="email" type="text"
+                           spellcheck="false"
+                           autocapitalize="off"
+                           required>
+                </ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label position="stacked" color="primary">Password</ion-label>
+                <ion-input [(ngModel)]="password" type="password"
+                           required>
+                </ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label class="ion-text-wrap" position="stacked" color="primary">
+                    How are you planning to use Speako?
+                </ion-label>
+                <ion-textarea [(ngModel)]="tellUs" required>
+                </ion-textarea>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-checkbox slot="start" [(ngModel)]="subscribeToNews"></ion-checkbox>
+                <ion-label color="primary" class="ion-text-wrap">I would like to subscribe to news channel</ion-label>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row form_buttons>
+        <ion-col>
+            <ion-button (click)="onSignUp()" type="submit" expand="block">Submit</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button routerLink="/visitor/signin" color="light" expand="block">Sign In</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>

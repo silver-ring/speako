@@ -1,0 +1,97 @@
+<ion-grid style="min-width: 70%">
+    <ion-row>
+        <ion-col size-md="7" size-sm="12" size="12">
+            <app-language-selector-button [(selectedVoiceId)]="selectedVoice"></app-language-selector-button>
+        </ion-col>
+        <ion-col size-md="2" size-sm="12" size="12" class="ion-margin-end">
+            <ion-button (click)="playAudio()" style="width: 100%">Play
+                <ion-icon slot="end" name="play"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col size-md="2" size-sm="12" size="12" class="ion-margin-end">
+            <ion-button (click)="downloadAudio()" style="width: 100%">Download
+                <ion-icon slot="end" name="download"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment">
+                <ion-segment-button value="text">
+                    <ion-label>Text</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="settings">
+                    <ion-label>Settings</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedSegment === 'settings'">
+        <ion-col size-md="6" size="12">
+            <ion-item>
+                <ion-label>SSML</ion-label>
+                <ion-toggle [(ngModel)]="isSsml"></ion-toggle>
+            </ion-item>
+        </ion-col>
+        <ion-col size-md="6" size="12">
+            <ion-item>
+                <ion-label>Profile</ion-label>
+                <ion-select [(ngModel)]="profile" interface="popover">
+                    <ion-select-option value="">Default</ion-select-option>
+                    <ion-select-option value="wearable-class-device">Wearable Device</ion-select-option>
+                    <ion-select-option value="handset-class-device">Handset</ion-select-option>
+                    <ion-select-option value="headphone-class-device">Headphone</ion-select-option>
+                    <ion-select-option value="small-bluetooth-speaker-class-device">Small Speaker</ion-select-option>
+                    <ion-select-option value="medium-bluetooth-speaker-class-device">Medium Speaker</ion-select-option>
+                    <ion-select-option value="large-home-entertainment-class-device">Home Entertainment
+                    </ion-select-option>
+                    <ion-select-option value="large-automotive-class-device">Automotive</ion-select-option>
+                    <ion-select-option value="telephony-class-application">Telephony</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedSegment === 'settings'">
+        <ion-col size="12">
+            <ion-range min="0.25" max="4.00" color="primary" snaps [(ngModel)]="speed" step="0.25">
+                <ion-label slot="start">Speed</ion-label>
+                <ion-label slot="end" position="fixed">{{speed}}</ion-label>
+            </ion-range>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedSegment === 'settings'">
+        <ion-col size="12">
+            <ion-range min="-20" max="20" color="primary" snaps [(ngModel)]="pitch">
+                <ion-label slot="start">Pitch</ion-label>
+                <ion-label slot="end" position="fixed">{{pitch}}</ion-label>
+            </ion-range>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedSegment === 'settings'">
+        <ion-col size="12">
+            <ion-range min="-10" max="10" color="primary" snaps [(ngModel)]="gainDb" step="1">
+                <ion-label slot="start">Gain DB</ion-label>
+                <ion-label slot="end" position="fixed">{{gainDb}}</ion-label>
+            </ion-range>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="selectedSegment === 'text'">
+        <ion-col>
+            <ion-textarea [(ngModel)]="text" rows="10" cols="100"
+                          style="box-shadow: 0 5px 30px rgba(0,0,0,.55);border-radius: 12px;padding: 16px;font-size: 18px;line-height: 1.44;"
+                          placeholder="please enter your text here then click play to convert your text to speech">
+            </ion-textarea>
+        </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+        <ion-col>
+            <ion-text [color]="5000 - text.length >= 0?'primary':'danger'">Text: {{text.length}}
+                /5000</ion-text>
+        </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+        <ion-col>
+            <ion-text [color]="yourBalance >= 0?'primary':'danger'">Your Balance: {{yourBalance}}</ion-text>
+        </ion-col>
+    </ion-row>
+</ion-grid>

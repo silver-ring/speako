@@ -1,0 +1,147 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/member/playground" text="Back">
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title slot="end">Your balance: {{yourBalance}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row>
+            <ion-col offset-md="1" size-xs="12" size-md="3" class="price_box ion-padding ion-margin">
+                <ion-toolbar color="secondary" class="ion-no-margin ion-no-padding">
+                    <ion-title style="text-align: center">
+                        <ion-icon name="battery-charging"></ion-icon>
+                        Basic Package
+                    </ion-title>
+                </ion-toolbar>
+                <h1 style="text-align: center;font-size: 3rem">0.99$</h1>
+                <ion-list>
+                    <ion-item>
+                        <ion-text color="danger">10,000 characters package</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        157 Premium Voices available
+                    </ion-item>
+                    <ion-item>
+                        23 Languages Support
+                    </ion-item>
+                    <ion-item>
+                        MP3 Download
+                    </ion-item>
+                    <ion-item>
+                        Advanced Editor
+                    </ion-item>
+                    <ion-item>
+                        Voice speed (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        Pitch tuning (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        SSML support (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        and more to come...
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="block" color="secondary" (click)="checkout(basicPackage.id)">
+                    Buy Now
+                </ion-button>
+            </ion-col>
+            <ion-col size-xs="12" size-md="3" class="price_box  ion-padding ion-margin">
+                <ion-toolbar color="primary" class="ion-no-margin ion-no-padding">
+                    <ion-title style="text-align: center">
+                        <ion-icon name="star"></ion-icon>
+                        Extra Package
+                    </ion-title>
+                </ion-toolbar>
+                <h1 style="text-align: center;font-size: 3rem">9.99$</h1>
+                <ion-list>
+                    <ion-item>
+                        <ion-text color="danger">100,000 characters package</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-text color="danger">+10,000 bonus characters</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        157 Premium Voices available
+                    </ion-item>
+                    <ion-item>
+                        23 Languages Support
+                    </ion-item>
+                    <ion-item>
+                        MP3 Download
+                    </ion-item>
+                    <ion-item>
+                        Advanced Editor
+                    </ion-item>
+                    <ion-item>
+                        Voice speed (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        Pitch tuning (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        SSML support (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        and more to come...
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="block" color="primary" (click)="checkout(extraPackage.id)">
+                    Buy Now
+                </ion-button>
+            </ion-col>
+            <ion-col size-xs="12" size-md="3" class="price_box  ion-padding ion-margin">
+                <ion-toolbar color="tertiary" class="ion-no-margin ion-no-padding">
+                    <ion-title style="text-align: center">
+                        <ion-icon name="heart"></ion-icon>
+                        Super Package
+                    </ion-title>
+                </ion-toolbar>
+                <h1 style="text-align: center;font-size: 3rem">99.99$</h1>
+                <ion-list>
+                    <ion-item>
+                        <ion-text color="danger">1,000,000 characters package</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-text color="danger">+200,000 bonus characters</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        <ion-text color="danger">Customer Support Priority</ion-text>
+                    </ion-item>
+                    <ion-item>
+                        157 Premium Voices available
+                    </ion-item>
+                    <ion-item>
+                        23 Languages Support
+                    </ion-item>
+                    <ion-item>
+                        MP3 Download
+                    </ion-item>
+                    <ion-item>
+                        Advanced Editor
+                    </ion-item>
+                    <ion-item>
+                        Voice speed (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        Pitch tuning (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        SSML support (coming soon)
+                    </ion-item>
+                    <ion-item>
+                        and more to come...
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="block" color="tertiary" (click)="checkout(superPackage.id)">
+                    Buy Now
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,118 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{operation === 0 ? 'Add' : 'Edit'}} Paragraph</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+                <ion-icon name="close" slot="start"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md="10" size-sm="12">
+                <app-language-selector-button [(selectedVoiceId)]="paragraph.speaker"></app-language-selector-button>
+            </ion-col>
+            <ion-col size-md="2" size-sm="12">
+                <ion-button color="primary" fill="outline" (click)="testSpeak()" expand="block">
+                    Test
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment">
+                    <ion-segment-button value="text">
+                        <ion-label>Text</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="settings">
+                        <ion-label>Settings</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <ion-list *ngIf="selectedSegment === 'text'">
+        <ion-item>
+            <ion-textarea [rows]="20" [(ngModel)]="paragraph.text" [autofocus]="true"
+                          placeholder="please enter your text here"></ion-textarea>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="selectedSegment === 'settings'" lines="none">
+        <ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-item>
+                            <ion-label>SSML</ion-label>
+                            <ion-toggle [(ngModel)]="paragraph.isSsml"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-item>
+                            <ion-label>Profile</ion-label>
+                            <ion-select [(ngModel)]="paragraph.profiles[0]" interface="popover">
+                                <ion-select-option value="">Default</ion-select-option>
+                                <ion-select-option value="wearable-class-device">Wearable Device</ion-select-option>
+                                <ion-select-option value="handset-class-device">Handset</ion-select-option>
+                                <ion-select-option value="headphone-class-device">Headphone</ion-select-option>
+                                <ion-select-option value="small-bluetooth-speaker-class-device">Small Speaker
+                                </ion-select-option>
+                                <ion-select-option value="medium-bluetooth-speaker-class-device">Medium Speaker
+                                </ion-select-option>
+                                <ion-select-option value="large-home-entertainment-class-device">Home Entertainment
+                                </ion-select-option>
+                                <ion-select-option value="large-automotive-class-device">Automotive</ion-select-option>
+                                <ion-select-option value="telephony-class-application">Telephony</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-range min="0.25" max="4.00" color="primary" snaps [(ngModel)]="paragraph.speed"
+                                   step="0.25">
+                            <ion-label slot="start">Speed</ion-label>
+                            <ion-label slot="end" position="fixed">{{paragraph.speed}}</ion-label>
+                        </ion-range>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-range min="-20" max="20" color="primary" snaps [(ngModel)]="paragraph.pitch">
+                            <ion-label slot="start">Pitch</ion-label>
+                            <ion-label slot="end" position="fixed">{{paragraph.pitch}}</ion-label>
+                        </ion-range>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-range min="-10" max="10" color="primary" snaps [(ngModel)]="paragraph.gainDb" step="1">
+                            <ion-label slot="start">Gain DB</ion-label>
+                            <ion-label slot="end" position="fixed">{{paragraph.gainDb}}</ion-label>
+                        </ion-range>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-item lines="none">
+        <ion-text [color]="5000 - paragraph.text.length >= 0?'primary':'danger'">Text: {{paragraph.text.length}}
+            /5000</ion-text>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-text [color]="yourBalance > 0?'primary':'danger'">Your Balance: {{yourBalance}}</ion-text>
+    </ion-item>
+    <ion-button *ngIf="operation === 1" color="danger" (click)="delete()"
+                class="ion-margin-vertical ion-padding-end ion-float-end">
+        Delete
+    </ion-button>
+    <ion-button (click)="doAction()" class="ion-margin-vertical ion-padding-end ion-float-end">
+        Save
+    </ion-button>
+</ion-footer>

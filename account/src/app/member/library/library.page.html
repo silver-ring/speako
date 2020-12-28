@@ -1,0 +1,45 @@
+<ion-grid class="create_new">
+    <ion-row>
+        <ion-col>
+            <ion-button (click)="createProject()">Create Project
+                <ion-icon slot="end" name="add"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid class="list_projects">
+    <ion-row>
+        <ion-col *ngIf="projects.length > 0 ">
+            <ion-card *ngFor="let project of projects">
+                <ion-card-header>
+                    <ion-label dir="auto" color="dark">
+                        {{project.title}}
+                    </ion-label>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-button size="small" routerLink="/speech" [queryParams]="{key: project.key}">
+                        Open
+                        <ion-icon slot="end" name="open"></ion-icon>
+                    </ion-button>
+                    <ion-button size="small" (click)="editProject(project.key)">
+                        Edit
+                        <ion-icon slot="end" name="create"></ion-icon>
+                    </ion-button>
+                    <ion-button size="small" (click)="deleteProject(project.key, project.title)">
+                        Delete
+                        <ion-icon slot="end" name="trash"></ion-icon>
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+        <ion-col *ngIf="projects.length === 0">
+            <ion-card>
+                <ion-card-header>
+                    <ion-title dir="auto" color="dark">
+                        <h5>No Projects Exist Yet</h5>
+                    </ion-title>
+                </ion-card-header>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>

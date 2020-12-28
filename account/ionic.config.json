@@ -1,0 +1,7 @@
+{
+  "name": "Speako",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

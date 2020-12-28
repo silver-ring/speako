@@ -1,0 +1,9 @@
+{
+  "/proxy/*": {
+    "target": "http://localhost:5001/speako/us-central1",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {"^/proxy" : ""}
+  }
+}

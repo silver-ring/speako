@@ -1,0 +1,145 @@
+<ion-grid style="width: 100%;">
+    <ion-row>
+        <ion-col size-lg="8" offset-lg="2" size="12">
+            <ion-card>
+                <ion-card-header>
+                    <h1>Current Balance</h1>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                Your Account Email:
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                {{email}}
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                Your Balance:
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                {{balance}}
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size-lg="3" size="12">
+                                Recharge Your Balance
+                            </ion-col>
+                            <ion-col size-lg="8" size="12">
+                                <ion-button routerLink="/checkout" size="small">
+                                    Add More Points
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid style="width: 100%">
+    <ion-row>
+        <ion-col size-lg="8" offset-lg="2" size="12">
+            <ion-card>
+                <ion-card-header>
+                    <h1>Order Refund</h1>
+                </ion-card-header>
+                <ion-card-content>
+                    To request a refund please send email to refund@speako.io with order id and refund reason
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid style="width: 100%">
+    <ion-row>
+        <ion-col size-lg="8" offset-lg="2" size="12">
+            <ion-card>
+                <ion-card-header>
+                    <h1>Payments</h1>
+                </ion-card-header>
+                <ion-card-content *ngIf="payments.length > 0">
+                    <ion-card *ngFor="let payment of payments">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Order Id:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.order_id}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Item:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.product_name}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Quantity:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.quantity}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Received Points:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.points}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Date:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.date}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Amount:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.sale_gross}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Payment Method:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    {{payment.payment_method}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size-lg="3" size="12">
+                                    Receipt:
+                                </ion-col>
+                                <ion-col size-lg="8" size="12">
+                                    <ion-button size="small" href="{{payment.receipt_url}}">Receipt Link</ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card>
+                </ion-card-content>
+                <ion-card-content *ngIf="payments.length <= 0">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-align-items-center" size="12">
+                                <ion-text color="danger">No Payments</ion-text>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>

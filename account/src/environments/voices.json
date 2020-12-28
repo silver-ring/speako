@@ -1,0 +1,730 @@
+[
+  {
+    "id": "ar-XA-Standard-C",
+    "language": "Arabic",
+    "country": "sa",
+    "gender": "Male",
+    "name": "Austin"
+  },
+  {
+    "id": "ar-XA-Standard-B",
+    "language": "Arabic",
+    "country": "sa",
+    "gender": "Male",
+    "name": "Cory"
+  },
+  {
+    "id": "ar-XA-Standard-A",
+    "language": "Arabic",
+    "country": "sa",
+    "gender": "Female",
+    "name": "Lillian"
+  },
+  {
+    "id": "ar-XA-Standard-D",
+    "language": "Arabic",
+    "country": "sa",
+    "gender": "Female",
+    "name": "Violet"
+  },
+  {
+    "id": "cmn-CN-Standard-C",
+    "language": "Chinese",
+    "country": "cn",
+    "gender": "Male",
+    "name": "Blake"
+  },
+  {
+    "id": "cmn-CN-Standard-B",
+    "language": "Chinese",
+    "country": "cn",
+    "gender": "Male",
+    "name": "Theodore"
+  },
+  {
+    "id": "cmn-CN-Standard-D",
+    "language": "Chinese",
+    "country": "cn",
+    "gender": "Female",
+    "name": "Leah"
+  },
+  {
+    "id": "cmn-CN-Standard-A",
+    "language": "Chinese",
+    "country": "cn",
+    "gender": "Female",
+    "name": "Rosalie"
+  },
+  {
+    "id": "cmn-TW-Standard-C-Alpha",
+    "language": "Chinese",
+    "country": "tw",
+    "gender": "Male",
+    "name": "Johnny"
+  },
+  {
+    "id": "cmn-TW-Standard-B-Alpha",
+    "language": "Chinese",
+    "country": "tw",
+    "gender": "Male",
+    "name": "Peter"
+  },
+  {
+    "id": "cmn-TW-Standard-A-Alpha",
+    "language": "Chinese",
+    "country": "tw",
+    "gender": "Female",
+    "name": "Teresa"
+  },
+  {
+    "id": "cs-CZ-Standard-A",
+    "language": "Czech",
+    "country": "cz",
+    "gender": "Female",
+    "name": "Eugenia"
+  },
+  {
+    "id": "da-DK-Standard-A",
+    "language": "Danish",
+    "country": "dk",
+    "gender": "Female",
+    "name": "Georgia"
+  },
+  {
+    "id": "nl-NL-Standard-B",
+    "language": "Dutch",
+    "country": "nl",
+    "gender": "Male",
+    "name": "Stanley"
+  },
+  {
+    "id": "nl-NL-Standard-C",
+    "language": "Dutch",
+    "country": "nl",
+    "gender": "Male",
+    "name": "Terry"
+  },
+  {
+    "id": "nl-NL-Standard-A",
+    "language": "Dutch",
+    "country": "nl",
+    "gender": "Female",
+    "name": "Alice"
+  },
+  {
+    "id": "nl-NL-Standard-D",
+    "language": "Dutch",
+    "country": "nl",
+    "gender": "Female",
+    "name": "Hannah"
+  },
+  {
+    "id": "nl-NL-Standard-E",
+    "language": "Dutch",
+    "country": "nl",
+    "gender": "Female",
+    "name": "Lida"
+  },
+  {
+    "id": "en-AU-Standard-B",
+    "language": "English",
+    "country": "au",
+    "gender": "Male",
+    "name": "Marc"
+  },
+  {
+    "id": "en-AU-Standard-D",
+    "language": "English",
+    "country": "au",
+    "gender": "Male",
+    "name": "Todd"
+  },
+  {
+    "id": "en-AU-Standard-C",
+    "language": "English",
+    "country": "au",
+    "gender": "Female",
+    "name": "Claudia"
+  },
+  {
+    "id": "en-AU-Standard-A",
+    "language": "English",
+    "country": "au",
+    "gender": "Female",
+    "name": "Ollie"
+  },
+  {
+    "id": "en-GB-Standard-B",
+    "language": "English",
+    "country": "gb",
+    "gender": "Male",
+    "name": "Duane"
+  },
+  {
+    "id": "en-GB-Standard-D",
+    "language": "English",
+    "country": "gb",
+    "gender": "Male",
+    "name": "Joseph"
+  },
+  {
+    "id": "en-GB-Standard-A",
+    "language": "English",
+    "country": "gb",
+    "gender": "Female",
+    "name": "Genevieve"
+  },
+  {
+    "id": "en-GB-Standard-C",
+    "language": "English",
+    "country": "gb",
+    "gender": "Female",
+    "name": "Maggie"
+  },
+  {
+    "id": "en-IN-Standard-B",
+    "language": "English",
+    "country": "in",
+    "gender": "Male",
+    "name": "Glen"
+  },
+  {
+    "id": "en-IN-Standard-C",
+    "language": "English",
+    "country": "in",
+    "gender": "Male",
+    "name": "Johnny"
+  },
+  {
+    "id": "en-IN-Standard-A",
+    "language": "English",
+    "country": "in",
+    "gender": "Female",
+    "name": "Flora"
+  },
+  {
+    "id": "en-IN-Standard-D",
+    "language": "English",
+    "country": "in",
+    "gender": "Female",
+    "name": "Ida"
+  },
+  {
+    "id": "en-US-Standard-B",
+    "language": "English",
+    "country": "us",
+    "gender": "Male",
+    "name": "Jackson"
+  },
+  {
+    "id": "en-US-Standard-D",
+    "language": "English",
+    "country": "us",
+    "gender": "Male",
+    "name": "Leroy"
+  },
+  {
+    "id": "en-US-Standard-C",
+    "language": "English",
+    "country": "us",
+    "gender": "Female",
+    "name": "Mathilda"
+  },
+  {
+    "id": "en-US-Standard-E",
+    "language": "English",
+    "country": "us",
+    "gender": "Female",
+    "name": "Theresa"
+  },
+  {
+    "id": "fil-PH-Standard-A",
+    "language": "Filipino",
+    "country": "ph",
+    "gender": "Female",
+    "name": "Estella"
+  },
+  {
+    "id": "fi-FI-Standard-A",
+    "language": "Finnish",
+    "country": "fi",
+    "gender": "Female",
+    "name": "Jennie"
+  },
+  {
+    "id": "fr-CA-Standard-B",
+    "language": "French",
+    "country": "ca",
+    "gender": "Male",
+    "name": "Alan"
+  },
+  {
+    "id": "fr-CA-Standard-D",
+    "language": "French",
+    "country": "ca",
+    "gender": "Male",
+    "name": "Dennis"
+  },
+  {
+    "id": "fr-CA-Standard-C",
+    "language": "French",
+    "country": "ca",
+    "gender": "Female",
+    "name": "Johanna"
+  },
+  {
+    "id": "fr-CA-Standard-A",
+    "language": "French",
+    "country": "ca",
+    "gender": "Female",
+    "name": "Nina"
+  },
+  {
+    "id": "fr-FR-Standard-D",
+    "language": "French",
+    "country": "fr",
+    "gender": "Male",
+    "name": "Caleb"
+  },
+  {
+    "id": "fr-FR-Standard-B",
+    "language": "French",
+    "country": "fr",
+    "gender": "Male",
+    "name": "Richard"
+  },
+  {
+    "id": "fr-FR-Standard-E",
+    "language": "French",
+    "country": "fr",
+    "gender": "Female",
+    "name": "Alberta"
+  },
+  {
+    "id": "fr-FR-Standard-A",
+    "language": "French",
+    "country": "fr",
+    "gender": "Female",
+    "name": "Amelia"
+  },
+  {
+    "id": "fr-FR-Standard-C",
+    "language": "French",
+    "country": "fr",
+    "gender": "Female",
+    "name": "Kathryn"
+  },
+  {
+    "id": "de-DE-Standard-E",
+    "language": "German",
+    "country": "de",
+    "gender": "Male",
+    "name": "Erik"
+  },
+  {
+    "id": "de-DE-Standard-B",
+    "language": "German",
+    "country": "de",
+    "gender": "Male",
+    "name": "Maurice"
+  },
+  {
+    "id": "de-DE-Standard-F",
+    "language": "German",
+    "country": "de",
+    "gender": "Female",
+    "name": "Beulah"
+  },
+  {
+    "id": "de-DE-Standard-A",
+    "language": "German",
+    "country": "de",
+    "gender": "Female",
+    "name": "Nina"
+  },
+  {
+    "id": "el-GR-Standard-A",
+    "language": "Greek",
+    "country": "gr",
+    "gender": "Female",
+    "name": "Madge"
+  },
+  {
+    "id": "hi-IN-Standard-C",
+    "language": "Hindi",
+    "country": "in",
+    "gender": "Male",
+    "name": "Keith"
+  },
+  {
+    "id": "hi-IN-Standard-B",
+    "language": "Hindi",
+    "country": "in",
+    "gender": "Male",
+    "name": "Oscar"
+  },
+  {
+    "id": "hi-IN-Standard-A",
+    "language": "Hindi",
+    "country": "in",
+    "gender": "Female",
+    "name": "Helen"
+  },
+  {
+    "id": "hi-IN-Standard-D",
+    "language": "Hindi",
+    "country": "in",
+    "gender": "Female",
+    "name": "Olivia"
+  },
+  {
+    "id": "hu-HU-Standard-A",
+    "language": "Hungarian",
+    "country": "hu",
+    "gender": "Female",
+    "name": "Amanda"
+  },
+  {
+    "id": "id-ID-Standard-B",
+    "language": "Indonesian",
+    "country": "id",
+    "gender": "Male",
+    "name": "Jeremiah"
+  },
+  {
+    "id": "id-ID-Standard-C",
+    "language": "Indonesian",
+    "country": "id",
+    "gender": "Male",
+    "name": "Jerry"
+  },
+  {
+    "id": "id-ID-Standard-A",
+    "language": "Indonesian",
+    "country": "id",
+    "gender": "Female",
+    "name": "Adelaide"
+  },
+  {
+    "id": "id-ID-Standard-D",
+    "language": "Indonesian",
+    "country": "id",
+    "gender": "Female",
+    "name": "Linnie"
+  },
+  {
+    "id": "it-IT-Standard-D",
+    "language": "Italian",
+    "country": "it",
+    "gender": "Male",
+    "name": "Chase"
+  },
+  {
+    "id": "it-IT-Standard-C",
+    "language": "Italian",
+    "country": "it",
+    "gender": "Male",
+    "name": "Frank"
+  },
+  {
+    "id": "it-IT-Standard-B",
+    "language": "Italian",
+    "country": "it",
+    "gender": "Female",
+    "name": "Elizabeth"
+  },
+  {
+    "id": "it-IT-Standard-A",
+    "language": "Italian",
+    "country": "it",
+    "gender": "Female",
+    "name": "Florence"
+  },
+  {
+    "id": "ja-JP-Standard-D",
+    "language": "Japanese",
+    "country": "jp",
+    "gender": "Male",
+    "name": "Chad"
+  },
+  {
+    "id": "ja-JP-Standard-C",
+    "language": "Japanese",
+    "country": "jp",
+    "gender": "Male",
+    "name": "Rodney"
+  },
+  {
+    "id": "ja-JP-Standard-A",
+    "language": "Japanese",
+    "country": "jp",
+    "gender": "Female",
+    "name": "Betty"
+  },
+  {
+    "id": "ja-JP-Standard-B",
+    "language": "Japanese",
+    "country": "jp",
+    "gender": "Female",
+    "name": "Teresa"
+  },
+  {
+    "id": "ko-KR-Standard-D",
+    "language": "Korean",
+    "country": "kr",
+    "gender": "Male",
+    "name": "Jimmy"
+  },
+  {
+    "id": "ko-KR-Standard-C",
+    "language": "Korean",
+    "country": "kr",
+    "gender": "Male",
+    "name": "Randall"
+  },
+  {
+    "id": "ko-KR-Standard-A",
+    "language": "Korean",
+    "country": "kr",
+    "gender": "Female",
+    "name": "Jane"
+  },
+  {
+    "id": "ko-KR-Standard-B",
+    "language": "Korean",
+    "country": "kr",
+    "gender": "Female",
+    "name": "Verna"
+  },
+  {
+    "id": "nb-NO-Standard-D",
+    "language": "Norwegian",
+    "country": "no",
+    "gender": "Male",
+    "name": "Jerry"
+  },
+  {
+    "id": "nb-NO-Standard-B",
+    "language": "Norwegian",
+    "country": "no",
+    "gender": "Male",
+    "name": "Mason"
+  },
+  {
+    "id": "nb-NO-Standard-A",
+    "language": "Norwegian",
+    "country": "no",
+    "gender": "Female",
+    "name": "Alma"
+  },
+  {
+    "id": "nb-NO-Standard-C",
+    "language": "Norwegian",
+    "country": "no",
+    "gender": "Female",
+    "name": "Amanda"
+  },
+  {
+    "id": "nb-no-Standard-E",
+    "language": "Norwegian",
+    "country": "no",
+    "gender": "Female",
+    "name": "May"
+  },
+  {
+    "id": "pl-PL-Standard-C",
+    "language": "Polish",
+    "country": "pl",
+    "gender": "Male",
+    "name": "Tyler"
+  },
+  {
+    "id": "pl-PL-Standard-B",
+    "language": "Polish",
+    "country": "pl",
+    "gender": "Male",
+    "name": "Vernon"
+  },
+  {
+    "id": "pl-PL-Standard-D",
+    "language": "Polish",
+    "country": "pl",
+    "gender": "Female",
+    "name": "Bessie"
+  },
+  {
+    "id": "pl-PL-Standard-E",
+    "language": "Polish",
+    "country": "pl",
+    "gender": "Female",
+    "name": "Georgia"
+  },
+  {
+    "id": "pl-PL-Standard-A",
+    "language": "Polish",
+    "country": "pl",
+    "gender": "Female",
+    "name": "Janie"
+  },
+  {
+    "id": "pt-BR-Standard-A",
+    "language": "Portuguese",
+    "country": "br",
+    "gender": "Female",
+    "name": "Ruby"
+  },
+  {
+    "id": "pt-PT-Standard-B",
+    "language": "Portuguese",
+    "country": "pt",
+    "gender": "Male",
+    "name": "Dennis"
+  },
+  {
+    "id": "pt-PT-Standard-C",
+    "language": "Portuguese",
+    "country": "pt",
+    "gender": "Male",
+    "name": "Mario"
+  },
+  {
+    "id": "pt-PT-Standard-A",
+    "language": "Portuguese",
+    "country": "pt",
+    "gender": "Female",
+    "name": "Clara"
+  },
+  {
+    "id": "pt-PT-Standard-D",
+    "language": "Portuguese",
+    "country": "pt",
+    "gender": "Female",
+    "name": "Edna"
+  },
+  {
+    "id": "ru-RU-Standard-D",
+    "language": "Russian",
+    "country": "ru",
+    "gender": "Male",
+    "name": "Bobby"
+  },
+  {
+    "id": "ru-RU-Standard-B",
+    "language": "Russian",
+    "country": "ru",
+    "gender": "Male",
+    "name": "Lester"
+  },
+  {
+    "id": "ru-RU-Standard-C",
+    "language": "Russian",
+    "country": "ru",
+    "gender": "Female",
+    "name": "Edith"
+  },
+  {
+    "id": "ru-RU-Standard-A",
+    "language": "Russian",
+    "country": "ru",
+    "gender": "Female",
+    "name": "Evelyn"
+  },
+  {
+    "id": "ru-RU-Standard-E",
+    "language": "Russian",
+    "country": "ru",
+    "gender": "Female",
+    "name": "Mable"
+  },
+  {
+    "id": "sk-SK-Standard-A",
+    "language": "Slovak",
+    "country": "sk",
+    "gender": "Female",
+    "name": "Lenora"
+  },
+  {
+    "id": "es-ES-Standard-A",
+    "language": "Spanish",
+    "country": "es",
+    "gender": "Female",
+    "name": "Theresa"
+  },
+  {
+    "id": "sv-SE-Standard-A",
+    "language": "Swedish",
+    "country": "se",
+    "gender": "Female",
+    "name": "Harriet"
+  },
+  {
+    "id": "tr-TR-Standard-E",
+    "language": "Turkish",
+    "country": "tr",
+    "gender": "Male",
+    "name": "Maurice"
+  },
+  {
+    "id": "tr-TR-Standard-B",
+    "language": "Turkish",
+    "country": "tr",
+    "gender": "Male",
+    "name": "Tom"
+  },
+  {
+    "id": "tr-TR-Standard-A",
+    "language": "Turkish",
+    "country": "tr",
+    "gender": "Female",
+    "name": "Hettie"
+  },
+  {
+    "id": "tr-TR-Standard-D",
+    "language": "Turkish",
+    "country": "tr",
+    "gender": "Female",
+    "name": "Irene"
+  },
+  {
+    "id": "tr-TR-Standard-C",
+    "language": "Turkish",
+    "country": "tr",
+    "gender": "Female",
+    "name": "Lulu"
+  },
+  {
+    "id": "uk-UA-Standard-A",
+    "language": "Ukrainian",
+    "country": "ua",
+    "gender": "Female",
+    "name": "Hannah"
+  },
+  {
+    "id": "vi-VN-Standard-B",
+    "language": "Vietnamese",
+    "country": "vn",
+    "gender": "Male",
+    "name": "Bruce"
+  },
+  {
+    "id": "vi-VN-Standard-D",
+    "language": "Vietnamese",
+    "country": "vn",
+    "gender": "Male",
+    "name": "Gabriel"
+  },
+  {
+    "id": "vi-VN-Standard-C",
+    "language": "Vietnamese",
+    "country": "vn",
+    "gender": "Female",
+    "name": "Cecilia"
+  },
+  {
+    "id": "vi-VN-Standard-A",
+    "language": "Vietnamese",
+    "country": "vn",
+    "gender": "Female",
+    "name": "Nellie"
+  }
+]

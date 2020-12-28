@@ -1,0 +1,22 @@
+<ion-grid class="entering_form" *ngIf="!isLoading">
+  <ion-row>
+    <ion-col>
+      <h1>Reset Password</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="stacked" color="primary">New Password</ion-label>
+        <ion-input [(ngModel)]="newPassword" name="password" type="password"
+                   required>
+        </ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row form_buttons>
+    <ion-col>
+      <ion-button (click)="onConfirm()" type="submit" expand="block">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

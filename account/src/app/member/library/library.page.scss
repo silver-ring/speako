@@ -1,0 +1,12 @@
+.create_new {
+  max-height: 10vh;
+}
+
+.list_projects {
+  overflow-wrap: break-spaces;
+
+  @media (min-width: 600px) {
+    max-width: 60vw;
+    min-width: 50vw;
+  }
+}
